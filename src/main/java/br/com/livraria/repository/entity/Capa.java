@@ -27,11 +27,13 @@ public class Capa {
 	}
 
 	public Capa(String nome, String tipo, String descricao, Categoria categoria) {
-		super();
 		this.nome = nome;
 		this.tipo = tipo;
 		this.descricao = descricao;
 		this.categoria = categoria;
+	}
+
+	public Capa(String nome, String tipo, Categoria categoria, String descricao, byte[] imagem) {
 	}
 
 	public String getNome() {

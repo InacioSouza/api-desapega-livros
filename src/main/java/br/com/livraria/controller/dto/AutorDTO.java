@@ -37,6 +37,12 @@ public class AutorDTO {
 		return new Autor(this.nome, this.sobrenome, this.nomeArtistico, this.nacionalidade);
 	}
 
+	public List<AutorDTO> converteParaAutorDTO(List<Autor> autores) {
+
+		return autores.stream().map(AutorDTO::new).collect(Collectors.toList());
+
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -59,10 +65,6 @@ public class AutorDTO {
 				+ ", nacionalidade=" + nacionalidade + "]";
 	}
 
-	public List<AutorDTO> converteParaAutorDTO(List<Autor> autores) {
 
-		return autores.stream().map(AutorDTO::new).collect(Collectors.toList());
-
-	}
 
 }
