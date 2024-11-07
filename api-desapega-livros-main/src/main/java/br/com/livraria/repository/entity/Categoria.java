@@ -23,6 +23,7 @@ public class Categoria {
 	private List<Livro> livros = new ArrayList<>(); 
 
 	public Categoria() {}
+	
 	public Categoria(String nome) {
 		this.nome = nome;
 	}

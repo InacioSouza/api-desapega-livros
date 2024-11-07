@@ -33,14 +33,8 @@ public class AutorDTO {
 		this.nacionalidade = autor.getNacionalidade();
 	}
 
-	public Autor converteParaAutor() {
-		return new Autor(this.nome, this.sobrenome, this.nomeArtistico, this.nacionalidade);
-	}
-
-	public List<AutorDTO> converteParaAutorDTO(List<Autor> autores) {
-
-		return autores.stream().map(AutorDTO::new).collect(Collectors.toList());
-
+	public AutorDTO converteParaDTO(Autor autor) {
+		return new AutorDTO(autor.getNome(), autor.getSobrenome(), autor.getNomeArtistico(), autor.getNacionalidade());
 	}
 
 	public String getNome() {
@@ -65,6 +59,10 @@ public class AutorDTO {
 				+ ", nacionalidade=" + nacionalidade + "]";
 	}
 
+	public List<AutorDTO> converteParaAutorDTO(List<Autor> autores) {
 
+		return autores.stream().map(AutorDTO::new).collect(Collectors.toList());
+
+	}
 
 }

@@ -11,19 +11,20 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="categoria")
-public class Categoria {
+@Table(name="lingua")
+public class Lingua {
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
-	
 	private String nome;
 	
-	@ManyToMany(mappedBy = "categorias")
-	private List<Livro> livros = new ArrayList<>(); 
-
-	public Categoria() {}
-	public Categoria(String nome) {
+	@ManyToMany(mappedBy = "linguas")
+	private List<Livro> livros = new ArrayList<>();
+	
+	public Lingua() {}
+	
+	public Lingua(String nome) {
 		this.nome = nome;
 	}
 
