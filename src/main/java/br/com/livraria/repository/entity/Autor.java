@@ -35,6 +35,7 @@ public class Autor {
 	public Autor(String nome, String sobrenome, String nomeArtistico, String nacionalidade) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
+		this.nomeArtistico = nomeArtistico;
 		this.nacionalidade = nacionalidade;
 	}
 

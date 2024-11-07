@@ -27,7 +27,7 @@ public class AutorService {
 
 		} else if (autorDTO.getSobrenome() == null || autorDTO.getSobrenome().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(new Response("Sobreome do autor não especificado", 400));
+					.body(new Response("Sobrenome do autor não especificado", 400));
 
 		} else if (autorDTO.getNacionalidade() == null || autorDTO.getNacionalidade().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
