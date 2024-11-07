@@ -26,12 +26,12 @@ public class Capa {
 	public Capa() {
 	}
 
-	public Capa(String nome, String tipo, String descricao, Categoria categoria) {
-		super();
+	public Capa(String nome, String tipo, String descricao, Categoria categoria, byte[] imagem) {
 		this.nome = nome;
 		this.tipo = tipo;
 		this.descricao = descricao;
 		this.categoria = categoria;
+		this.imagem = imagem;
 	}
 
 	public String getNome() {
@@ -77,5 +77,5 @@ public class Capa {
 	public Long getId() {
 		return id;
 	}
-	
+
 }

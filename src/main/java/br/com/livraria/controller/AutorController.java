@@ -13,7 +13,7 @@ import br.com.livraria.repository.AutorRepository;
 import br.com.livraria.services.AutorService;
 
 @RestController
-@RequestMapping("/autores")
+@RequestMapping("/autor")
 public class AutorController {
 
 	@Autowired
@@ -21,6 +21,8 @@ public class AutorController {
 
 	@PostMapping
 	ResponseEntity<?> cadastraAutor(@RequestBody AutorDTO autorDTO) {
+		
+		System.out.println("\n\n" + autorDTO.getNomeArtistico() + "\n\n");
 
 		return new AutorService().cadastraAutor(autorDTO, autorRepo);
 	}
