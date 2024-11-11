@@ -17,6 +17,11 @@ public class CategoriaForm {
 		return new Categoria(this.nome);
 	}
 	
+	public  CategoriaForm converteParaCategoriaForm(Categoria categoria){
+		return new CategoriaForm(categoria.getNome());
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}

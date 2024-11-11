@@ -20,6 +20,10 @@ public class CapaForm {
 		this.descricao = descricao;
 		this.imagem = imagem;
 	}
+	
+	public CapaForm(Capa capa) {
+	
+	}
 
 	public Capa converteParaCapa() {
 		Capa capa = new Capa(this.nome, this.tipo, this.descricao, this.categoria.converteParaCategoria(),

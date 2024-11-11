@@ -2,11 +2,7 @@ package br.com.livraria.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.livraria.controller.dto.AutorDTO;
 import br.com.livraria.repository.AutorRepository;
@@ -18,18 +14,25 @@ public class AutorController {
 
 	@Autowired
 	AutorRepository autorRepo;
+	
+	@Autowired
+	private AutorService autorService;
 
 	@PostMapping
 	ResponseEntity<?> cadastraAutor(@RequestBody AutorDTO autorDTO) {
 		
 		System.out.println("\n\n" + autorDTO.getNomeArtistico() + "\n\n");
 
-		return new AutorService().cadastraAutor(autorDTO, autorRepo);
+		return autorService.cadastraAutor(autorDTO, autorRepo);
 	}
-
-	// Fazer com paginação
+	
 	@GetMapping
 	ResponseEntity<?> listaAutores() {
-		return new AutorService().listaAutores(autorRepo);
+		return autorService.listaAutores(autorRepo);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> buscaAutorPorId(@PathVariable Long id) {
+		return autorService.buscaPorId(autorRepo, id);
 	}
 }

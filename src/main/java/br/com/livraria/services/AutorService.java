@@ -1,6 +1,7 @@
 package br.com.livraria.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,5 +66,15 @@ public class AutorService {
 
 		return ResponseEntity.status(HttpStatus.OK).body(new AutorDTO().converteParaAutorDTO(autores));
 
+	}
+	
+	public ResponseEntity<?> buscaPorId(AutorRepository autorRepo, Long id){
+		Optional<Autor> autor = autorRepo.findById(id);
+		
+		if (autor.isPresent()) {
+			return ResponseEntity.ok(autor.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Response("Nenhum autor encontrado", 404));
+		}
 	}
 }
