@@ -60,7 +60,10 @@ public class Livro {
 		this.dtPublicacao = dtPublicacao;
 		this.descricao = descricao;
 	}
-
+	
+	public Livro(String titulo, LocalDateTime dtPublicacao, String descricao, Capa capa) {
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}
