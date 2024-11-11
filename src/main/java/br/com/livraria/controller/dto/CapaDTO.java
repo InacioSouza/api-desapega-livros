@@ -35,7 +35,7 @@ public class CapaDTO {
     }
     
     public CapaDTO converteParaDTO(Capa capa) {
-        return new CapaDTO(capa.getNome(), capa.getTipo(), capa.getCategoria(), capa.getDescricao(), capa.getImagem());
+        return new CapaDTO(capa);
     }
     
     

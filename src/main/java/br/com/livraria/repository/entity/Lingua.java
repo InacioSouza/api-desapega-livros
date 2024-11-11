@@ -27,7 +27,10 @@ public class Lingua {
 	public Lingua(String nome) {
 		this.nome = nome;
 	}
-
+	
+	public Lingua(String nome, List<Livro> livros) {
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -38,5 +41,9 @@ public class Lingua {
 
 	public Long getId() {
 		return id;
+	}
+	
+	public List<Livro> getLivros() {
+		return livros;
 	}
 }

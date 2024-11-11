@@ -32,27 +32,39 @@ public class Inventario {
 		this.livro = livro;
 		this.qtdLivros = qtdLivros;
 	}
-
-	public Livro getLivro() {
-		return livro;
+	
+	public Inventario(Livro livro, Lingua lingua, int qtdLivros) {
 	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-	}
-
-	public int getQtdLivros() {
-		return qtdLivros;
-	}
-
-	public void setQtdLivros(int qtdLivros) {
-		this.qtdLivros = qtdLivros;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
+	public Livro getLivro() {
+		return livro;
+	}
 	
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+	
+	public Lingua getLingua() {
+		return lingua;
+	}
+	
+	public void setLingua(Lingua lingua) {
+		this.lingua = lingua;
+	}
+	
+	public int getQtdLivros() {
+		return qtdLivros;
+	}
+	
+	public void setQtdLivros(int qtdLivros) {
+		this.qtdLivros = qtdLivros;
+	}
 }
