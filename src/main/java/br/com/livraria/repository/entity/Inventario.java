@@ -10,26 +10,27 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="inventario")
+@Table(name = "inventario")
 public class Inventario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	private Livro livro;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	private Lingua lingua;
-	
-	@Column(name="qtd_livro")
-	private int qtdLivros;
-	
-	public Inventario(){}
 
-	public Inventario(Livro livro, int qtdLivros) {
-		super();
+	@Column(name = "qtd_livro")
+	private int qtdLivros;
+
+	public Inventario() {
+	}
+
+	public Inventario(Livro livro, Lingua lingua, int qtdLivros) {
 		this.livro = livro;
+		this.lingua = lingua;
 		this.qtdLivros = qtdLivros;
 	}
 
@@ -52,7 +53,13 @@ public class Inventario {
 	public Long getId() {
 		return id;
 	}
-	
-	
-	
+
+	public Lingua getLingua() {
+		return lingua;
+	}
+
+	public void setLingua(Lingua lingua) {
+		this.lingua = lingua;
+	}
+
 }

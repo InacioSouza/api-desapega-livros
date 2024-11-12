@@ -54,11 +54,13 @@ public class Livro {
 	public Livro() {
 	}
 
-	public Livro(String titulo, Editora editora, LocalDateTime dtPublicacao, String descricao) {
+	public Livro(String titulo, Editora editora, LocalDateTime dtPublicacao, String descricao, Capa capa,List<Autor> autores) {
 		this.titulo = titulo;
 		this.editora = editora;
 		this.dtPublicacao = dtPublicacao;
 		this.descricao = descricao;
+		this.capa = capa;
+		this.autores = autores;
 	}
 
 	public String getTitulo() {
@@ -103,6 +105,10 @@ public class Livro {
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<Autor> getAutores() {
+		return this.autores;
 	}
 
 }

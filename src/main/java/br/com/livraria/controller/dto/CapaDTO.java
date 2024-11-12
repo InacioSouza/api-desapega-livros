@@ -1,37 +1,44 @@
-package br.com.livraria.repository.entity;
+package br.com.livraria.controller.dto;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import br.com.livraria.repository.entity.Capa;
+import br.com.livraria.repository.entity.Categoria;
 
-@Entity
-@Table(name = "capa")
-public class Capa {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CapaDTO {
+	
 	private Long id;
+
 	private String nome;
+
 	private String tipo;
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+
 	private Categoria categoria;
+
 	private String descricao;
+
 	private byte[] imagem;
 
-	public Capa() {
+	public CapaDTO() {
 	}
 
-	public Capa(String nome, String tipo, String descricao, Categoria categoria, byte[] imagem) {
+	public CapaDTO(String nome, String tipo, Categoria categoria, String descricao, byte[] imagem) {
 		this.nome = nome;
 		this.tipo = tipo;
-		this.descricao = descricao;
 		this.categoria = categoria;
+		this.descricao = descricao;
 		this.imagem = imagem;
+	}
+
+	public CapaDTO(Capa capa) {
+		this.id = capa.getId();
+		this.nome = capa.getNome();
+		this.tipo = capa.getTipo();
+		this.categoria = capa.getCategoria();
+		this.descricao = capa.getDescricao();
+		this.imagem = capa.getImagem();
+	}
+
+	public CapaDTO converteParaDTO(Capa capa) {
+		return new CapaDTO(capa);
 	}
 
 	public String getNome() {
@@ -73,13 +80,4 @@ public class Capa {
 	public void setImagem(byte[] imagem) {
 		this.imagem = imagem;
 	}
-
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
-
 }
