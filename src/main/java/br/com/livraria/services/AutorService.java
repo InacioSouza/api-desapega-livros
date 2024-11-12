@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.livraria.controller.dto.AutorDTO;
+import br.com.livraria.controller.form.AutorForm;
 import br.com.livraria.repository.AutorRepository;
 import br.com.livraria.repository.entity.Autor;
 import br.com.livraria.services.response.Response;
@@ -16,20 +17,20 @@ import br.com.livraria.services.response.Response;
 public class AutorService {
 
 	@Transactional
-	public ResponseEntity cadastraAutor(AutorDTO autorDTO, AutorRepository autorRepo) {
+	public ResponseEntity cadastraAutor(AutorForm autorForm, AutorRepository autorRepo) {
 
-		if (autorDTO == null) {
+		if (autorForm == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Autor null", 400));
 
-		} else if (autorDTO.getNome() == null || autorDTO.getNome().isEmpty()) {
+		} else if (autorForm.getNome() == null || autorForm.getNome().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body(new Response("Nome do autor não especificado", 400));
 
-		} else if (autorDTO.getSobrenome() == null || autorDTO.getSobrenome().isEmpty()) {
+		} else if (autorForm.getSobrenome() == null || autorForm.getSobrenome().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body(new Response("Sobrenome do autor não especificado", 400));
 
-		} else if (autorDTO.getNacionalidade() == null || autorDTO.getNacionalidade().isEmpty()) {
+		} else if (autorForm.getNacionalidade() == null || autorForm.getNacionalidade().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body(new Response("Nacionalidade do autor não especificado", 400));
 
@@ -37,15 +38,15 @@ public class AutorService {
 
 		Autor autor = null;
 
-		autor = autorRepo.buscaAutorPorTodosOsAtributos(autorDTO.getNome(), autorDTO.getSobrenome(),
-				autorDTO.getNacionalidade());
+		autor = autorRepo.buscaAutorPorTodosOsAtributos(autorForm.getNome(), autorForm.getSobrenome(),
+				autorForm.getNacionalidade());
 
 		if (autor != null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT)
 					.body(new Response("Autor presente no banco de dados", 409));
 		}
 
-		autor = autorRepo.save(autorDTO.converteParaAutor());
+		autor = autorRepo.save(autorForm.converteParaAutor());
 
 		if (autor == null) {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)

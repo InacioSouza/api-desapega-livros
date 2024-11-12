@@ -3,9 +3,14 @@ package br.com.livraria.controller.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import br.com.livraria.repository.entity.Autor;
 
 public class AutorDTO {
+
+	@JsonProperty("id")
+	private Long id;
 
 	private String nome;
 
@@ -19,7 +24,8 @@ public class AutorDTO {
 
 	}
 
-	public AutorDTO(String nome, String sobrenome, String nomeArtistico, String nacionalidade) {
+	public AutorDTO(Long id, String nome, String sobrenome, String nomeArtistico, String nacionalidade) {
+		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.nomeArtistico = nomeArtistico;
@@ -27,14 +33,19 @@ public class AutorDTO {
 	}
 
 	public AutorDTO(Autor autor) {
+		this.id = autor.getId();
 		this.nome = autor.getNome();
 		this.sobrenome = autor.getSobrenome();
 		this.nomeArtistico = autor.getNomeArtistico();
 		this.nacionalidade = autor.getNacionalidade();
 	}
 
-	public Autor converteParaAutor() {
-		return new Autor(this.nome, this.sobrenome, this.nomeArtistico, this.nacionalidade);
+	public void setValuesAutorDTO(Autor autor) {
+		this.id = autor.getId();
+		this.nome = autor.getNome();
+		this.sobrenome = autor.getSobrenome();
+		this.nomeArtistico = autor.getNomeArtistico();
+		this.nacionalidade = autor.getNacionalidade();
 	}
 
 	public String getNome() {
@@ -55,7 +66,7 @@ public class AutorDTO {
 
 	@Override
 	public String toString() {
-		return "AutorDTO [nome=" + nome + ", sobrenome=" + sobrenome + ", nomeArtistico=" + nomeArtistico
+		return "AutorDTO [ id=" + id + "nome=" + nome + ", sobrenome=" + sobrenome + ", nomeArtistico=" + nomeArtistico
 				+ ", nacionalidade=" + nacionalidade + "]";
 	}
 

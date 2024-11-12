@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.livraria.controller.dto.AutorDTO;
+import br.com.livraria.controller.form.AutorForm;
 import br.com.livraria.repository.AutorRepository;
 import br.com.livraria.services.AutorService;
 
@@ -20,11 +20,9 @@ public class AutorController {
 	AutorRepository autorRepo;
 
 	@PostMapping
-	ResponseEntity<?> cadastraAutor(@RequestBody AutorDTO autorDTO) {
+	ResponseEntity<?> cadastraAutor(@RequestBody AutorForm autorForm) {
 		
-		System.out.println("\n\n" + autorDTO.getNomeArtistico() + "\n\n");
-
-		return new AutorService().cadastraAutor(autorDTO, autorRepo);
+		return new AutorService().cadastraAutor(autorForm, autorRepo);
 	}
 
 	// Fazer com paginação
